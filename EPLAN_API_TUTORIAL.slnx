@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="EPLAN_API_TUTORIAL/EPLAN_API_TUTORIAL.csproj" Id="457254dc-0dfb-4955-90e6-11b49c00ec55" />
   <Project Path="EPLAN_SCRIPT_TUTORIAL/EPLAN_SCRIPT_TUTORIAL.csproj" Id="776bf2f4-44d6-4f5e-9747-d1002e1a9b13" />
 </Solution>
