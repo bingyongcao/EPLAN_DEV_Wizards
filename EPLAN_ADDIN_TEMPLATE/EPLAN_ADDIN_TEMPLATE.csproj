@@ -111,7 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="install-template.ps1" />
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
