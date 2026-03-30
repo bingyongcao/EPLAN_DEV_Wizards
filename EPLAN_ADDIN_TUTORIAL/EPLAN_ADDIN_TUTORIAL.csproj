@@ -52,6 +52,11 @@
       <HintPath>..\..\..\Eplan\Platform\2026.0.3\Bin\Eplan.EplApi.Guiu.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Eplan.EplApi.HEServicesu, Version=1.0.0.0, Culture=neutral, PublicKeyToken=57aaa27e22f7b107, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Eplan\Platform\2026.0.3\Bin\Eplan.EplApi.HEServicesu.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -63,7 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetProjPropsAction.cs" />
+    <Compile Include="ProjAction.cs" />
     <Compile Include="AddInRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

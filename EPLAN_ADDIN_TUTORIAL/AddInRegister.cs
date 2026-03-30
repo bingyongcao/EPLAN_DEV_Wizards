@@ -14,9 +14,9 @@ namespace EPLAN_API_TUTORIAL
             var ribbonBar = new RibbonBar();
             var newTab = ribbonBar.AddTab(m_newTabName);
             var cmdGroup = newTab.AddCommandGroup(m_commandGroupName, 0);
-            RibbonCommandInfo ribbonCommandInfo = new RibbonCommandInfo(m_commandName, GetProjPropsAction.ActionName) 
+            RibbonCommandInfo ribbonCommandInfo = new RibbonCommandInfo(m_commandName, ProjAction.ActionName) 
             {
-                Description = "get properties of project",
+                Description = "",
                 IndexButtonPosition = 0,
                 Icon = new RibbonIcon(CommandIcon.Flag_ZH)
             };
@@ -52,6 +52,6 @@ namespace EPLAN_API_TUTORIAL
 
         public string m_newTabName = "EPLAN_API_TUTORIAL";
         public string m_commandGroupName = "Common";
-        public string m_commandName = "GetProjProps";
+        public string m_commandName = "Project";
     }
 }

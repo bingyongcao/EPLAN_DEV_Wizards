@@ -2,7 +2,7 @@
   <Folder Name="/Solution Items/">
     <File Path="README.md" />
   </Folder>
-  <Project Path="EPLAN_ADDIN_WIZARD/EPLAN_ADDIN_WIZARD.csproj" Id="a24abf7f-730e-4fb8-bb82-bbe3dbcdd9cb" />
   <Project Path="EPLAN_ADDIN_TUTORIAL/EPLAN_ADDIN_TUTORIAL.csproj" Id="457254dc-0dfb-4955-90e6-11b49c00ec55" />
+  <Project Path="EPLAN_ADDIN_TEMPLATE/EPLAN_ADDIN_TEMPLATE.csproj" Id="a24abf7f-730e-4fb8-bb82-bbe3dbcdd9cb" />
   <Project Path="EPLAN_SCRIPT_TUTORIAL/EPLAN_SCRIPT_TUTORIAL.csproj" Id="776bf2f4-44d6-4f5e-9747-d1002e1a9b13" />
 </Solution>
