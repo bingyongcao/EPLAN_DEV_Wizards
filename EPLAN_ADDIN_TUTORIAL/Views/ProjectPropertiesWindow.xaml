@@ -18,7 +18,51 @@
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <!-- DataGrid Row Style -->
+            <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Style.Triggers>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsMouseOver" Value="True"/>
+                            <Condition Property="IsSelected" Value="False"/>
+                        </MultiTrigger.Conditions>
+                        <Setter Property="Background" Value="#E8F4FC"/>
+                    </MultiTrigger>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Trigger>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsMouseOver" Value="True"/>
+                            <Condition Property="IsSelected" Value="False"/>
+                        </MultiTrigger.Conditions>
+                        <Setter Property="Background" Value="#E8F4FC"/>
+                    </MultiTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="DataGridTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
         </ResourceDictionary>
+
     </Window.Resources>
 
     <Window.DataContext>
@@ -59,16 +103,22 @@
                   Margin="0,0,0,10"
                   BorderBrush="{DynamicResource BorderBrush}"
                   Background="White"
-                  RowBackground="White">
+                  RowBackground="White"
+                  AlternatingRowBackground="#F5F5F5"
+                  RowStyle="{StaticResource DataGridRowStyle}"
+                  CellStyle="{StaticResource DataGridCellStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID"
                                     Binding="{Binding DisplayId}"
+                                    ElementStyle="{StaticResource DataGridTextBlockStyle}"
                                     Width="80"/>
                 <DataGridTextColumn Header="Property Name"
                                     Binding="{Binding PropertyName}"
+                                    ElementStyle="{StaticResource DataGridTextBlockStyle}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Value"
                                     Binding="{Binding PropertyValue}"
+                                    ElementStyle="{StaticResource DataGridTextBlockStyle}"
                                     Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
