@@ -1,58 +1,25 @@
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Eplan.EplApi.DataModel;
 using Eplan.EplApi.HEServices;
 using System.Collections.ObjectModel;
 
 namespace EPLAN_API_TUTORIAL.ViewModels
 {
-    public class ProjectPropertiesViewModel : INotifyPropertyChanged
+    public partial class ProjectPropertiesViewModel : ObservableObject
     {
-        private ObservableCollection<Models.ProjectPropertyModel> _properties;
-        private string _projectName;
-        private bool _isLoading;
+        [ObservableProperty]
+        private ObservableCollection<Models.ProjectPropertyModel> _properties = new();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        [ObservableProperty]
+        private string _projectName = string.Empty;
+
+        [ObservableProperty]
+        private bool _isLoading;
 
         public ProjectPropertiesViewModel()
         {
-            _properties = new ObservableCollection<Models.ProjectPropertyModel>();
             LoadProjectProperties();
-        }
-
-        public ObservableCollection<Models.ProjectPropertyModel> Properties
-        {
-            get => _properties;
-            set
-            {
-                _properties = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ProjectName
-        {
-            get => _projectName;
-            set
-            {
-                _projectName = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool IsLoading
-        {
-            get => _isLoading;
-            set
-            {
-                _isLoading = value;
-                OnPropertyChanged();
-            }
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void LoadProjectProperties()
@@ -61,12 +28,11 @@ namespace EPLAN_API_TUTORIAL.ViewModels
 
             try
             {
-                Project selectedProj = new SelectionSet().GetCurrentProject(true);
+                Project? selectedProj = new SelectionSet().GetCurrentProject(true);
                 ProjectName = selectedProj?.ProjectName ?? "No Project";
 
                 if (selectedProj == null)
                 {
-                    IsLoading = false;
                     return;
                 }
 
@@ -74,7 +40,10 @@ namespace EPLAN_API_TUTORIAL.ViewModels
                 {
                     var propDef = propValue.Definition;
 
-                    if (propDef.IsInternal) continue;
+                    if (propDef.IsInternal)
+                    {
+                        continue;
+                    }
 
                     if (propDef.IsIndexed)
                     {
@@ -88,7 +57,7 @@ namespace EPLAN_API_TUTORIAL.ViewModels
                                     PropertyId = indexProp.Id.AsInt,
                                     Index = i,
                                     PropertyName = indexProp.Definition.Name,
-                                    PropertyValue = indexProp.ToString()
+                                    PropertyValue = indexProp.ToString() ?? string.Empty
                                 });
                             }
                         }
@@ -102,7 +71,7 @@ namespace EPLAN_API_TUTORIAL.ViewModels
                                 PropertyId = propValue.Id.AsInt,
                                 Index = null,
                                 PropertyName = propValue.Definition.Name,
-                                PropertyValue = propValue.ToString()
+                                PropertyValue = propValue.ToString() ?? string.Empty
                             });
                         }
                     }
@@ -114,7 +83,8 @@ namespace EPLAN_API_TUTORIAL.ViewModels
             }
         }
 
-        public void Refresh()
+        [RelayCommand]
+        private void Refresh()
         {
             Properties.Clear();
             LoadProjectProperties();

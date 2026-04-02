@@ -1,17 +1,15 @@
+using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
-using System.Data;
 using EPLAN_API_TUTORIAL.ViewModels;
 
 namespace EPLAN_API_TUTORIAL.Views
 {
-    public class ProjectPropertiesWindow : System.Windows.Window
+    public class ProjectPropertiesWindow : Window
     {
         private readonly ProjectPropertiesViewModel _viewModel;
-        private DataGrid _dataGrid;
-        private TextBlock _countTextBlock;
-        private TextBlock _projectNameTextBlock;
 
         public ProjectPropertiesWindow()
         {
@@ -26,7 +24,7 @@ namespace EPLAN_API_TUTORIAL.Views
             Height = 600;
             Width = 900;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            Background = new SolidColorBrush(Color.FromRgb(240, 240, 240));
+            Background = new SolidColorBrush(Color.FromRgb(245, 245, 245));
 
             var mainGrid = new Grid { Margin = new Thickness(10) };
             mainGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -34,31 +32,31 @@ namespace EPLAN_API_TUTORIAL.Views
             mainGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
             // Header
-            var headerPanel = new StackPanel { Margin = new Thickness(0, 0, 0, 10) };
+            var headerPanel = new StackPanel { Margin = new Thickness(0, 0, 0, 15) };
 
             var titleText = new TextBlock
             {
                 Text = "Project Properties",
-                FontSize = 20,
-                FontWeight = FontWeights.Bold,
+                FontSize = 24,
+                FontWeight = FontWeights.SemiBold,
                 Foreground = new SolidColorBrush(Color.FromRgb(0, 120, 212))
             };
             headerPanel.Children.Add(titleText);
 
-            _projectNameTextBlock = new TextBlock
+            var projectNameText = new TextBlock
             {
                 FontSize = 14,
                 Margin = new Thickness(0, 5, 0, 0),
                 Foreground = new SolidColorBrush(Color.FromRgb(100, 100, 100))
             };
-            _projectNameTextBlock.SetBinding(TextBlock.TextProperty, new System.Windows.Data.Binding("ProjectName"));
-            headerPanel.Children.Add(_projectNameTextBlock);
+            projectNameText.SetBinding(TextBlock.TextProperty, new Binding("ProjectName"));
+            headerPanel.Children.Add(projectNameText);
 
             Grid.SetRow(headerPanel, 0);
             mainGrid.Children.Add(headerPanel);
 
             // DataGrid
-            _dataGrid = new DataGrid
+            var dataGrid = new DataGrid
             {
                 AutoGenerateColumns = false,
                 IsReadOnly = true,
@@ -69,72 +67,75 @@ namespace EPLAN_API_TUTORIAL.Views
                 HeadersVisibility = DataGridHeadersVisibility.Column,
                 AlternationCount = 2,
                 RowHeaderWidth = 0,
-                Margin = new Thickness(0, 0, 0, 10)
+                Margin = new Thickness(0, 0, 0, 10),
+                BorderBrush = new SolidColorBrush(Color.FromRgb(220, 220, 220)),
+                BorderThickness = new Thickness(1),
+                Background = new SolidColorBrush(Colors.White),
+                RowBackground = new SolidColorBrush(Colors.White),
+                AlternatingRowBackground = new SolidColorBrush(Color.FromRgb(245, 245, 245))
             };
 
-            _dataGrid.Columns.Add(new DataGridTextColumn
+            dataGrid.Columns.Add(new DataGridTextColumn
             {
                 Header = "ID",
-                Binding = new System.Windows.Data.Binding("DisplayId"),
+                Binding = new Binding("DisplayId"),
                 Width = 80
             });
-            _dataGrid.Columns.Add(new DataGridTextColumn
+            dataGrid.Columns.Add(new DataGridTextColumn
             {
                 Header = "Property Name",
-                Binding = new System.Windows.Data.Binding("PropertyName"),
+                Binding = new Binding("PropertyName"),
                 Width = new DataGridLength(1, DataGridLengthUnitType.Star)
             });
-            _dataGrid.Columns.Add(new DataGridTextColumn
+            dataGrid.Columns.Add(new DataGridTextColumn
             {
                 Header = "Value",
-                Binding = new System.Windows.Data.Binding("PropertyValue"),
+                Binding = new Binding("PropertyValue"),
                 Width = new DataGridLength(2, DataGridLengthUnitType.Star)
             });
 
-            _dataGrid.SetBinding(DataGrid.ItemsSourceProperty, new System.Windows.Data.Binding("Properties"));
+            dataGrid.SetBinding(DataGrid.ItemsSourceProperty, new Binding("Properties"));
 
-            Grid.SetRow(_dataGrid, 1);
-            mainGrid.Children.Add(_dataGrid);
+            Grid.SetRow(dataGrid, 1);
+            mainGrid.Children.Add(dataGrid);
 
             // Footer
             var footerPanel = new StackPanel
             {
                 Orientation = Orientation.Horizontal,
-                HorizontalAlignment = HorizontalAlignment.Right
+                HorizontalAlignment = HorizontalAlignment.Right,
+                Margin = new Thickness(0, 10, 0, 0)
             };
 
-            _countTextBlock = new TextBlock
+            var countText = new TextBlock
             {
                 VerticalAlignment = VerticalAlignment.Center,
                 Margin = new Thickness(0, 0, 20, 0),
                 Foreground = new SolidColorBrush(Color.FromRgb(100, 100, 100))
             };
-            _countTextBlock.SetBinding(TextBlock.TextProperty, new System.Windows.Data.Binding("Properties.Count")
+            countText.SetBinding(TextBlock.TextProperty, new Binding("Properties.Count")
             {
                 StringFormat = "Total: {0} properties"
             });
-            footerPanel.Children.Add(_countTextBlock);
+            footerPanel.Children.Add(countText);
 
             var refreshButton = new Button
             {
                 Content = "Refresh",
-                Width = 80,
-                Padding = new Thickness(5, 3, 5, 3)
+                Width = 100,
+                Height = 32,
+                Background = new SolidColorBrush(Color.FromRgb(0, 120, 212)),
+                Foreground = new SolidColorBrush(Colors.White),
+                BorderBrush = new SolidColorBrush(Color.FromRgb(0, 120, 212)),
+                Cursor = System.Windows.Input.Cursors.Hand
             };
-            refreshButton.Click += RefreshButton_Click;
+            refreshButton.SetBinding(Button.CommandProperty, new Binding("RefreshCommand"));
             footerPanel.Children.Add(refreshButton);
 
             Grid.SetRow(footerPanel, 2);
             mainGrid.Children.Add(footerPanel);
 
             Content = mainGrid;
-
-            Loaded += (s, e) => { };
-        }
-
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-            _viewModel.Refresh();
         }
     }
 }

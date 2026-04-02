@@ -15,6 +15,7 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -121,6 +122,10 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\CommunityToolkit.Mvvm.8.4.2\analyzers\dotnet\roslyn5.0\cs\CommunityToolkit.Mvvm.SourceGenerators.dll" />
+    <Analyzer Include="..\packages\CommunityToolkit.Mvvm.8.4.2\analyzers\dotnet\roslyn5.0\cs\CommunityToolkit.Mvvm.CodeFixers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
