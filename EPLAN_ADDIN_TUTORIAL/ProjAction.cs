@@ -19,7 +19,7 @@ namespace EPLAN_API_TUTORIAL
             new Decider().Decide(
                 EnumDecisionType.eOkCancelDecision, 
                 $"The first opened project: {project.ProjectName}\n" +
-                $"The current project: {selectedProj.ProjectName}",
+                $"The active project: {selectedProj.ProjectName}",
                 "Project", 
                 EnumDecisionReturn.eOK, 
                 EnumDecisionReturn.eOK);

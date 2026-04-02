@@ -18,7 +18,7 @@ namespace EPLAN_API_TUTORIAL
             {
                 Description = "",
                 IndexButtonPosition = 0,
-                Icon = new RibbonIcon(CommandIcon.Flag_ZH)
+                Icon = new RibbonIcon(CommandIcon.Octagon_0)
             };
             cmdGroup.AddCommand(ribbonCommandInfo);
             return true;
