@@ -105,12 +105,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ProjectPropertyModel.cs" />
     <Compile Include="ViewModels\ProjectPropertiesViewModel.cs" />
-    <Compile Include="Views\ProjectPropertiesWindow.cs" />
+    <Compile Include="Views\ProjectPropertiesWindow.xaml.cs">
+      <DependentUpon>ProjectPropertiesWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\ProjectPropertiesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
