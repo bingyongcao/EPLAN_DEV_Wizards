@@ -1,12 +1,14 @@
-# EPLAN_ADDIN_TEMPLATE
+# EPLAN_DEV
 
-## Where to find your template
+## EPLAN_ADDIN_TEMPLATE
+
+### Where to find your template
 ```
 C:\Users\<user>\Documents\Visual Studio 18\My Exported Templates
 C:\Users\<user>\Documents\Visual Studio 18\Templates\ProjectTemplates
 ```
 
-## Custom wizard
+### Custom wizard
 
 The custom wizard project is in `EPLAN_ADDIN_TEMPLATE.Wizard`.
 
@@ -16,7 +18,7 @@ It applies these template defaults automatically:
 - Debug start action = `D:\Eplan\Platform\2026.0.3\Bin\EPLAN.exe`
 - Debug start arguments = `/Variant:"Electric P8"`
 
-## How to make & install a template
+### How to make & install a template
 
 1. Project->Export template...
 2. build `EPLAN_ADDIN_TEMPLATE.Wizard`
@@ -44,10 +46,12 @@ C:\Users\<user>\Documents\Visual Studio 18\Templates\ProjectTemplates
 
 Note: we can run install-template.ps1 to do steps 5-6.
 
-## How to use
+### How to use
 
 1. restore packages
 
 ```
 dotnet restore
 ```
+
+## EPLAN_ADDIN_TUTORIAL

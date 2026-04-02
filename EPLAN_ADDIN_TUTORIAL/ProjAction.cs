@@ -2,7 +2,7 @@
 using Eplan.EplApi.Base;
 using Eplan.EplApi.DataModel;
 using Eplan.EplApi.HEServices;
-using System.Windows.Forms;
+using EPLAN_API_TUTORIAL.Views;
 
 namespace EPLAN_API_TUTORIAL
 {
@@ -17,14 +17,15 @@ namespace EPLAN_API_TUTORIAL
             Project selectedProj = new SelectionSet().GetCurrentProject(true);
 
             new Decider().Decide(
-                EnumDecisionType.eOkCancelDecision, 
+                EnumDecisionType.eOkCancelDecision,
                 $"The first opened project: {project.ProjectName}\n" +
                 $"The active project: {selectedProj.ProjectName}",
-                "Project", 
-                EnumDecisionReturn.eOK, 
+                "Project",
+                EnumDecisionReturn.eOK,
                 EnumDecisionReturn.eOK);
 
-            MessageBox.Show(GetAllProjProps(selectedProj), "Tip");
+            var window = new ProjectPropertiesWindow();
+            window.ShowDialog();
 
             return true;
         }
