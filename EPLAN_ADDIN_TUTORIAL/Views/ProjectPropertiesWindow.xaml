@@ -23,13 +23,6 @@
                 <Setter Property="Background" Value="White"/>
                 <Setter Property="Foreground" Value="Black"/>
                 <Style.Triggers>
-                    <MultiTrigger>
-                        <MultiTrigger.Conditions>
-                            <Condition Property="IsMouseOver" Value="True"/>
-                            <Condition Property="IsSelected" Value="False"/>
-                        </MultiTrigger.Conditions>
-                        <Setter Property="Background" Value="#E8F4FC"/>
-                    </MultiTrigger>
                     <Trigger Property="IsSelected" Value="True">
                         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
                         <Setter Property="Foreground" Value="White"/>
@@ -47,13 +40,6 @@
                         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
                         <Setter Property="Foreground" Value="White"/>
                     </Trigger>
-                    <MultiTrigger>
-                        <MultiTrigger.Conditions>
-                            <Condition Property="IsMouseOver" Value="True"/>
-                            <Condition Property="IsSelected" Value="False"/>
-                        </MultiTrigger.Conditions>
-                        <Setter Property="Background" Value="#E8F4FC"/>
-                    </MultiTrigger>
                 </Style.Triggers>
             </Style>
 
