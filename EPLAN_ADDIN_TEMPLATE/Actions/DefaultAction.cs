@@ -1,6 +1,7 @@
 ﻿using Eplan.EplApi.ApplicationFramework;
 using Eplan.EplApi.Base;
 using Eplan.EplApi.DataModel;
+using Eplan.EplApi.HEServices;
 
 namespace EPLAN_ADDIN_TEMPLATE
 {
@@ -16,8 +17,8 @@ namespace EPLAN_ADDIN_TEMPLATE
                 EnumDecisionReturn.eOK,
                 EnumDecisionReturn.eOK);
 
-            Project project = new ProjectManager().CurrentProject;
-            
+            Project activeProj = new SelectionSet().GetCurrentProject(true);
+
             return true;
         }
         public bool OnRegister(ref string Name, ref int Ordinal)

@@ -14,13 +14,21 @@ namespace EPLAN_API_TUTORIAL
             var ribbonBar = new RibbonBar();
             var newTab = ribbonBar.AddTab(m_newTabName);
             var cmdGroup = newTab.AddCommandGroup(m_commandGroupName, 0);
-            RibbonCommandInfo ribbonCommandInfo = new RibbonCommandInfo(m_commandName, ProjAction.ActionName) 
+            RibbonCommandInfo projCommandInfo = new RibbonCommandInfo("ProjInfo", ProjAction.ActionName) 
             {
                 Description = "",
                 IndexButtonPosition = 0,
                 Icon = new RibbonIcon(CommandIcon.Octagon_0)
             };
-            cmdGroup.AddCommand(ribbonCommandInfo);
+            cmdGroup.AddCommand(projCommandInfo);
+
+            RibbonCommandInfo structCommandInfo = new RibbonCommandInfo("StructInfo", StructAction.ActionName)
+            {
+                Description = "",
+                IndexButtonPosition = 1,
+                Icon = new RibbonIcon(CommandIcon.Octagon_1)
+            };
+            cmdGroup.AddCommand(structCommandInfo);
             return true;
         }
         public bool OnUnregister()
@@ -52,6 +60,5 @@ namespace EPLAN_API_TUTORIAL
 
         public string m_newTabName = "EPLAN_API_TUTORIAL";
         public string m_commandGroupName = "Common";
-        public string m_commandName = "Project";
     }
 }
