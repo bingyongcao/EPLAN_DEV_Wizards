@@ -66,7 +66,7 @@ namespace EPLAN_API_TUTORIAL
             }
 
             new Decider().Decide(
-                EnumDecisionType.eOkCancelDecision,
+                EnumDecisionType.eOkDecision,
                 message,
                 "Structure Identifier-Plant",
                 EnumDecisionReturn.eOK,

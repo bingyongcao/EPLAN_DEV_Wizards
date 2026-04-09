@@ -17,7 +17,7 @@ namespace EPLAN_API_TUTORIAL
             Project activeProj = new SelectionSet().GetCurrentProject(true);
 
             new Decider().Decide(
-                EnumDecisionType.eOkCancelDecision,
+                EnumDecisionType.eOkDecision,
                 $"The first opened project: {firstOpenedProject.ProjectName}\n" +
                 $"The active project: {activeProj.ProjectName}",
                 "Project",
