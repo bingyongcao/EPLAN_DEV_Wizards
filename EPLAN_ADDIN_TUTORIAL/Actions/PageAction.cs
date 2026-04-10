@@ -18,30 +18,45 @@ namespace EPLAN_API_TUTORIAL
             // filter pages
             PagesFilter pagesFilter = new PagesFilter()
             {
-                    Name = @"==S1=P01",
-                    DocumentType = DocumentTypeManager.DocumentType.Circuit
+                Name = @"==S1=P01",
+                DocumentType = DocumentTypeManager.DocumentType.Circuit
             };
-            Page[] pages = new DMObjectsFinder(activeProj).GetPages(pagesFilter);
+            Page[] filterPages = new DMObjectsFinder(activeProj).GetPages(pagesFilter);
 
             new Decider().Decide(
                 EnumDecisionType.eOkDecision,
                 $"count of all pages: {activeProj.Pages.Length}\n" +
-                $"count of circuit pages whose name starts with '==S1=P01': {pages.Length}\n",
+                $"count of circuit pages whose name starts with '==S1=P01': {filterPages.Length}\n",
                 "PageInfo",
                 EnumDecisionReturn.eOK,
                 EnumDecisionReturn.eOK);
 
-            FunctionsFilter functionsFilter = new FunctionsFilter()
+            foreach (Page page in filterPages)
             {
-                Page = pages[0],
-                FunctionCategory = Eplan.EplApi.Base.Enums.FunctionCategory.Terminal,
-                IsPlaced = true,
-            };
+                // get page description by PAGE_NOMINATIOMN property
+                var pageDescrProp = page.Properties.PAGE_NOMINATIOMN;
 
-            Function[] funcs = new DMObjectsFinder(activeProj)
-                .GetFunctions(functionsFilter);
+                // get page description by property int
+                pageDescrProp = EplanHelpers.PropertyUtility.GetPropValueByInt(page, 11011);
 
+                FunctionsFilter functionsFilter = new FunctionsFilter()
+                {
+                    Page = page,
+                    FunctionCategory = Eplan.EplApi.Base.Enums.FunctionCategory.PLCTerminal,
+                    IsPlaced = true
+                };
 
+                Function[] filterFuncs = new DMObjectsFinder(activeProj)
+                    .GetFunctions(functionsFilter);
+
+                new Decider().Decide(
+                    EnumDecisionType.eOkDecision,
+                    $"count of placed plc terminals in <{page.Name}> page: {filterFuncs.Length}\n",
+                    "PageInfo",
+                    EnumDecisionReturn.eOK,
+                    EnumDecisionReturn.eOK);
+            }
+            
             return true;
         }
 

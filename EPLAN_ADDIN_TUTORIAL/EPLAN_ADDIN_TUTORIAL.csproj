@@ -133,6 +133,7 @@
     <Analyzer Include="..\packages\CommunityToolkit.Mvvm.8.4.2\analyzers\dotnet\roslyn5.0\cs\CommunityToolkit.Mvvm.SourceGenerators.dll" />
     <Analyzer Include="..\packages\CommunityToolkit.Mvvm.8.4.2\analyzers\dotnet\roslyn5.0\cs\CommunityToolkit.Mvvm.CodeFixers.dll" />
   </ItemGroup>
+  <Import Project="..\EPLAN_HELPERS\EPLANHelpers.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if "$(ConfigurationName)" == "Debug" (
