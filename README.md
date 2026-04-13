@@ -10,6 +10,16 @@ This is a repo of EPLAN .NET Wizards for Visual Studio, including
 
 `EPLAN_SCRIPT_TUTORIAL`: tutorial for creating EPLAN scripts.
 
+## Offline API help
+
+### Installer
+
+- offline API installer is `Eplan_API_2026.zip` located in the root of this repo, 
+
+- follow the official installation guide: [EPLAN API 2026 Help Structure](https://www.eplan.help/en-us/Infoportal/Content/api/2026/Help%20structure.html)
+
+- after installation, one more thing you can do is binding the `F1` with `EPLAN API Help` in Visual Studio, so that you can directly open the API help by pressing `F1` when coding.
+
 ## Tech stack we recommend
 
 - Runtime: `.NET framework 4.8.1`
