@@ -1,0 +1,24 @@
+rm
+del
+Remove-Item
+rmdir
+sudo
+mv
+move
+chmod
+chown
+icacls
+attrib
+npm install -g
+kill
+taskkill
+apt-get
+brew install
+setx
+ssh
+scp
+ftp
+curl
+wget
+git push
+npm publish
