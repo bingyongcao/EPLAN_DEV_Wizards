@@ -66,7 +66,7 @@ namespace EPLAN_API_TUTORIAL
             return true;
         }
 
-        public string m_newTabName = "EPLAN_API_TUTORIAL";
+        public string m_newTabName = "EPLAN_ADDIN_TUTORIAL";
         public string m_commandGroupName = "Common";
     }
 }

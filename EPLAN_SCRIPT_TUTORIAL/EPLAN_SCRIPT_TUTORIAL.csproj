@@ -66,9 +66,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SimpleScriptForRegister.cs" />
-    <Compile Include="SimpleScriptWithParameters.cs" />
+    <Compile Include="AddContextMenu.cs" />
+    <Compile Include="AddCustomUI.cs" />
+    <Compile Include="CallScriptByCLI.cs" />
+    <Compile Include="EventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="ShowContextMenuInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

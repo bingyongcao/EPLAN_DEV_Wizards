@@ -1,10 +1,23 @@
-﻿using Eplan.EplApi.Base;
-using Eplan.EplApi.Scripting;
+﻿#region should be included to avoid namespace conflict
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
+using System.Diagnostics;
+using System.IO;
+# endregion
+
+using Eplan.EplApi.ApplicationFramework;
+using Eplan.EplApi.Base;
+using Eplan.EplApi.Gui;
+using Eplan.EplApi.Scripting;
 
 namespace EPLAN_SCRIPT_TUTORIAL
 {
-    public class SimpleScriptWithParameters
+    public class CallScriptByCLI
     {
         /// <summary>
         /// The function with a 'Start' attribute is the entry point of the script. 
