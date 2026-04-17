@@ -51,3 +51,5 @@ Note: we can run install-template.ps1 to do steps 5-6.
 ```
 dotnet restore
 ```
+
+2. bind your public key to the assembly and activate the "Delay sign only" flag

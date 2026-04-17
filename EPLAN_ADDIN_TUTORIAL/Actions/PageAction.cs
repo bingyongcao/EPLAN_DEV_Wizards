@@ -18,15 +18,21 @@ namespace EPLAN_API_TUTORIAL
             // filter pages
             PagesFilter pagesFilter = new PagesFilter()
             {
-                Name = @"==S1=P01",
                 DocumentType = DocumentTypeManager.DocumentType.Circuit
             };
+
+            pagesFilter.SetFilteredPropertyList(new PagePropertyList()
+            {
+                DESIGNATION_PLANT = "P01",
+                DESIGNATION_FUNCTIONALASSIGNMENT = "S1",
+            });
+
             Page[] filterPages = new DMObjectsFinder(activeProj).GetPages(pagesFilter);
 
             new Decider().Decide(
                 EnumDecisionType.eOkDecision,
                 $"count of all pages: {activeProj.Pages.Length}\n" +
-                $"count of circuit pages whose name starts with '==S1=P01': {filterPages.Length}\n",
+                $"count of circuit pages in '==S1=P01' hierarchy: {filterPages.Length}\n",
                 "PageInfo",
                 EnumDecisionReturn.eOK,
                 EnumDecisionReturn.eOK);

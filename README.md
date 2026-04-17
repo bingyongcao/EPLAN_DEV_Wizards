@@ -27,3 +27,6 @@ This is a repo of EPLAN .NET Wizards for Visual Studio, including
 - UI style: `HandyControl`
 - MVVM framework：`CommunityToolkit.Mvvm`
 - Logging: `Serilog`
+
+## License
+This tutorial is provided as-is for educational purposes.
