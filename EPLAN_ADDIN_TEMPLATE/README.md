@@ -18,7 +18,7 @@ It applies these template defaults automatically:
 
 ## How to make & install a template
 
-1. Project->Export template...
+1. Project->Export template->Choose icon in solution directory
 2. build `EPLAN_ADDIN_TEMPLATE.Wizard`
 3. unzip the template, then edit the `.vstemplate` file and add the wizard extension inside VSTemplate tag
 
@@ -29,6 +29,8 @@ It applies these template defaults automatically:
 </WizardExtension>
 ```
 4. rezip the template, be care of the zip hierarchy
+
+**Note**: we can run install-template.ps1 to do following steps (administrator permission is required).
 
 5. install `EPLAN_ADDIN_TEMPLATE.Wizard.dll` where Visual Studio can load template wizard assemblies, for example:
 
@@ -42,8 +44,6 @@ C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\PublicAssembli
 C:\Users\<user>\Documents\Visual Studio 18\Templates\ProjectTemplates
 ```
 
-Note: we can run install-template.ps1 to do steps 5-6.
-
 ## How to use
 
 1. restore packages
@@ -53,3 +53,5 @@ dotnet restore
 ```
 
 2. bind your public key to the assembly and activate the "Delay sign only" flag
+
+3. add signing command line into post-build event

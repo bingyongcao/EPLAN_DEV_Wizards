@@ -1,6 +1,8 @@
 <Solution>
   <Folder Name="/Solution Items/">
+    <File Path="eplan api addin.ico" />
     <File Path="install-template.ps1" />
+    <File Path="PostBuildScript.ps1" />
     <File Path="README.md" />
   </Folder>
   <Project Path="EPLAN_ADDIN_TUTORIAL/EPLAN_ADDIN_TUTORIAL.csproj" Id="457254dc-0dfb-4955-90e6-11b49c00ec55" />
