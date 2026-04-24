@@ -34,9 +34,10 @@ namespace EPLAN_API_TUTORIAL
             {
                 Description = "",
                 IndexButtonPosition = 2,
-                Icon = new RibbonIcon(CommandIcon.Octagon_2)
+                Icon = new RibbonIcon(Properties.Resources.airplay)
             };
             cmdGroup.AddCommand(pageCommandInfo);
+
             return true;
         }
         public bool OnUnregister()

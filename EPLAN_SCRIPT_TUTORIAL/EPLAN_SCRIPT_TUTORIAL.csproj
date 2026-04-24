@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddContextMenu.cs" />
+    <Compile Include="RemoveCustomScriptTab.cs" />
     <Compile Include="AddCustomUI.cs" />
     <Compile Include="CallScriptByCLI.cs" />
     <Compile Include="EventHandler.cs" />

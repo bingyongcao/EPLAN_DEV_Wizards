@@ -18,7 +18,7 @@ namespace EPLAN_ADDIN_TEMPLATE
             {
                 Description = "",
                 IndexButtonPosition = 0,
-                Icon = new RibbonIcon(CommandIcon.Flag_ZH)
+                Icon = new RibbonIcon(Properties.Resources.airplay)
             };
             cmdGroup.AddCommand(ribbonCommandInfo);
             return true;
