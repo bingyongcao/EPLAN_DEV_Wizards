@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\PageAction.cs" />
+    <Compile Include="Actions\MasterDataAction.cs" />
     <Compile Include="Actions\StructAction.cs" />
     <Compile Include="Actions\ProjAction.cs" />
     <Compile Include="AddInRegister.cs" />

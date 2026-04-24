@@ -38,6 +38,14 @@ namespace EPLAN_API_TUTORIAL
             };
             cmdGroup.AddCommand(pageCommandInfo);
 
+            RibbonCommandInfo mdCommandInfo = new RibbonCommandInfo("MasterDataInfo", MasterDataAction.ActionName)
+            {
+                Description = "",
+                IndexButtonPosition = 3,
+                Icon = new RibbonIcon(CommandIcon.Octagon_2)
+            };
+            cmdGroup.AddCommand(mdCommandInfo);
+
             return true;
         }
         public bool OnUnregister()
