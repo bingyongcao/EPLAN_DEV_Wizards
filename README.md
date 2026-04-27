@@ -28,5 +28,7 @@ This is a repo of EPLAN .NET Wizards for Visual Studio, including
 - MVVM framework：`CommunityToolkit.Mvvm`
 - Logging: `Serilog`
 
+⚠️**Note**: the source generator feature of CommunityToolkit.Mvvm requires SDK-style projects, so just use the toolkit's runtime API directly.
+
 ## License
 This tutorial is provided as-is for educational purposes.

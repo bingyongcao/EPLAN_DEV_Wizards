@@ -1,0 +1,23 @@
+﻿<Window x:Class="EPLAN_ADDIN_TEMPLATE.Views.MainWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EPLAN_ADDIN_TEMPLATE.Views"
+             Height="250" Width="300" Title="MainWindow" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Button Grid.Row="4" Content="Confirm" Style="{StaticResource ButtonPrimary}"
+            Width="80"
+            Height="36"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            Command="{Binding ConfirmCommand}" />
+    </Grid>
+</Window>

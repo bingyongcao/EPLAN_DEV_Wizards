@@ -2,6 +2,7 @@
 using Eplan.EplApi.Base;
 using Eplan.EplApi.DataModel;
 using Eplan.EplApi.HEServices;
+using EPLAN_ADDIN_TEMPLATE.Views;
 
 namespace EPLAN_ADDIN_TEMPLATE
 {
@@ -10,14 +11,9 @@ namespace EPLAN_ADDIN_TEMPLATE
         public static string ActionName = "DefaultAction";
         public bool Execute(ActionCallingContext ctx)
         {
-            new Decider().Decide(
-                EnumDecisionType.eOkDecision,
-                "Default action was called!",
-                "Tip",
-                EnumDecisionReturn.eOK,
-                EnumDecisionReturn.eOK);
+            MainWindow mainWindow = new MainWindow();
 
-            Project activeProj = new SelectionSet().GetCurrentProject(true);
+            mainWindow.ShowDialog();
 
             return true;
         }

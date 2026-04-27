@@ -30,7 +30,7 @@ It applies these template defaults automatically:
 ```
 4. rezip the template, be care of the zip hierarchy
 
-**Note**: we can run install-template.ps1 to do following steps (administrator permission is required).
+⚠️**Note**: we can run install-template.ps1 to do following steps (administrator permission is required).
 
 5. install `EPLAN_ADDIN_TEMPLATE.Wizard.dll` where Visual Studio can load template wizard assemblies, for example:
 

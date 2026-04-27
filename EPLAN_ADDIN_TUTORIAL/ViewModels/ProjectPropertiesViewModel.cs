@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Eplan.EplApi.DataModel;
 using Eplan.EplApi.HEServices;
+using EplanHelpers;
 using System.Collections.ObjectModel;
 
 namespace EPLAN_API_TUTORIAL.ViewModels
@@ -57,7 +58,7 @@ namespace EPLAN_API_TUTORIAL.ViewModels
                                     PropertyId = indexProp.Id.AsInt,
                                     Index = i,
                                     PropertyName = indexProp.Definition.Name,
-                                    PropertyValue = indexProp.ToString() ?? string.Empty
+                                    PropertyValue = PropertyUtility.GetPropertyValueString(indexProp, out string errorMsg) ?? string.Empty
                                 });
                             }
                         }
@@ -71,7 +72,7 @@ namespace EPLAN_API_TUTORIAL.ViewModels
                                 PropertyId = propValue.Id.AsInt,
                                 Index = null,
                                 PropertyName = propValue.Definition.Name,
-                                PropertyValue = propValue.ToString() ?? string.Empty
+                                PropertyValue = PropertyUtility.GetPropertyValueString(propValue, out string errorMsg) ?? string.Empty
                             });
                         }
                     }
