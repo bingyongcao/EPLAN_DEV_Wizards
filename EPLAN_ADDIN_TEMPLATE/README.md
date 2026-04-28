@@ -52,6 +52,10 @@ C:\Users\<user>\Documents\Visual Studio 18\Templates\ProjectTemplates
 dotnet restore
 ```
 
-2. bind your public key to the assembly and activate the "Delay sign only" flag
+2. dll signing ([EADN signing guide](EADN-Signing-Script-V1.8/EADN_signing_guide-Eplan_Cloud.pdf))
 
-3. add signing command line into post-build event
+	1. create conditional compilation for Debug/Release mode respectively (only sign in Release mode)
+
+	1. bind your public key to the assembly and activate the "Delay sign only" flag
+
+	1. add signing command line into post-build event
