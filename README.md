@@ -14,7 +14,7 @@ This is a repo of EPLAN .NET Wizards for Visual Studio, including
 
 ### Installer
 
-- offline API installer is `Eplan_API_2026.zip` located in the root of this repo, 
+- [offline API installer for 2026](../Resources/Eplan_API_2026.zip)
 
 - follow the official installation guide: [EPLAN API 2026 Help Structure](https://www.eplan.help/en-us/Infoportal/Content/api/2026/Help%20structure.html)
 
