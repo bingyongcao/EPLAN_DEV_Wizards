@@ -30,5 +30,50 @@ This is a repo of EPLAN .NET Wizards for Visual Studio, including
 
 ⚠️**Note**: the source generator feature of CommunityToolkit.Mvvm requires SDK-style projects, so just use the toolkit's runtime API directly.
 
+## SVG Icon
+
+> we can find svg icon resources from [lucide](https://lucide.dev/icons/). Don't forget to modify stroke color.
+
+EPLAN color chart:
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 16px; border-radius: 12px;">
+  
+  <div style="text-align: center;">
+    <div style="width: 80px; height: 80px; background-color: #E9EAEA; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+    <code style="margin-top: 8px; display: block;">#E9EAEA</code>
+  </div>
+  
+  <div style="text-align: center;">
+    <div style="width: 80px; height: 80px; background-color: #464646; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+    <code style="margin-top: 8px; display: block;">#464646</code>
+  </div>
+  
+  <div style="text-align: center;">
+    <div style="width: 80px; height: 80px; background-color: #0D9BE2; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+    <code style="margin-top: 8px; display: block;">#0D9BE2</code>
+  </div>
+
+  <div style="text-align: center;">
+    <div style="width: 80px; height: 80px; background-color: #E2001A; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+    <code style="margin-top: 8px; display: block;">#E2001A</code>
+  </div>
+
+  <div style="text-align: center;">
+    <div style="width: 80px; height: 80px; background-color: #F7CC1B; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+    <code style="margin-top: 8px; display: block;">#F7CC1B</code>
+  </div>
+
+  <div style="text-align: center;">
+    <div style="width: 80px; height: 80px; background-color: #F7821B; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+    <code style="margin-top: 8px; display: block;">#F7821B</code>
+  </div>
+
+  <div style="text-align: center;">
+    <div style="width: 80px; height: 80px; background-color: #62BA46; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+    <code style="margin-top: 8px; display: block;">#62BA46</code>
+  </div>
+  
+</div>
+
 ## License
 This tutorial is provided as-is for educational purposes.
