@@ -5,7 +5,7 @@ using StorableObject = Eplan.EplApi.DataModel.StorableObject;
 
 namespace EplanHelpers
 {
-    public class PropertyUtility
+    public static class PropertyUtility
     {
         public static PropertyValue GetPropValueByInt<T>(T obj, int propInt) where T : StorableObject
         {

@@ -10,5 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)PropertyUtility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SettingUtility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WindowsUtility.cs" />
   </ItemGroup>
 </Project>
