@@ -2,7 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Eplan.EplApi.DataModel;
 using Eplan.EplApi.HEServices;
-using EplanHelpers;
+using EplanUtilities;
 using System.Collections.ObjectModel;
 
 namespace EPLAN_API_TUTORIAL.ViewModels

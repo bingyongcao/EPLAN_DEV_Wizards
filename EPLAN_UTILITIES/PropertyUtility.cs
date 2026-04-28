@@ -3,7 +3,7 @@ using Eplan.EplApi.DataModel;
 using System.Linq;
 using StorableObject = Eplan.EplApi.DataModel.StorableObject;
 
-namespace EplanHelpers
+namespace EplanUtilities
 {
     public static class PropertyUtility
     {

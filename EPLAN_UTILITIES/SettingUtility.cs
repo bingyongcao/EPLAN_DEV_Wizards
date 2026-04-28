@@ -1,4 +1,4 @@
-namespace EplanHelpers
+namespace EplanUtilities
 {
     public static class SettingUtility
     {

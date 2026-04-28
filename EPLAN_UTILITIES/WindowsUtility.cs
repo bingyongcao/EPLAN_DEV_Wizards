@@ -1,6 +1,6 @@
 using Microsoft.Win32;
 
-namespace EplanHelpers
+namespace EplanUtilities
 {
     public enum WindowsTheme
     {

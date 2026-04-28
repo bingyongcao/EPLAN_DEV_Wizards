@@ -157,7 +157,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="..\EPLAN_HELPERS\EPLANHelpers.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\EPLAN_UTILITIES\EPLAN_UTILITIES.csproj">
+      <Project>{2c89d479-66af-445f-bc18-b0218cacbbcb}</Project>
+      <Name>EPLAN_UTILITIES</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if "$(ConfigurationName)" == "Debug" (

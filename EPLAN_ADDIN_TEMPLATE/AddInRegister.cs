@@ -1,5 +1,6 @@
 ﻿using Eplan.EplApi.ApplicationFramework;
 using Eplan.EplApi.Gui;
+using EplanUtilities;
 using System.Linq;
 
 namespace EPLAN_ADDIN_TEMPLATE
@@ -11,6 +12,10 @@ namespace EPLAN_ADDIN_TEMPLATE
             bLoadOnStart = true;
             CleanRibbonTab(m_newTabName);
 
+            // Set svg icon color based on the EPLAN color theme
+            string primaryColor = "#464646";
+            if (SettingUtility.GetEplanColorTheme() == WindowsTheme.Dark) primaryColor = "#E9EAEA";
+
             var ribbonBar = new RibbonBar();
             var newTab = ribbonBar.AddTab(m_newTabName);
             var cmdGroup = newTab.AddCommandGroup(m_commandGroupName, 0);
@@ -18,7 +23,7 @@ namespace EPLAN_ADDIN_TEMPLATE
             {
                 Description = "",
                 IndexButtonPosition = 0,
-                Icon = new RibbonIcon(Properties.Resources.airplay)
+                Icon = new RibbonIcon(Properties.Resources.airplay.Replace(PRIMARY_COLOR, primaryColor))
             };
             cmdGroup.AddCommand(ribbonCommandInfo);
             return true;
@@ -53,5 +58,6 @@ namespace EPLAN_ADDIN_TEMPLATE
         public string m_newTabName = "EPLAN_ADDIN_TEMPLATE";
         public string m_commandGroupName = "Common";
         public string m_commandName = "DefaultCommand";
+        public const string PRIMARY_COLOR = "currentColor";
     }
 }
