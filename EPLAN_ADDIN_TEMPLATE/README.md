@@ -52,7 +52,7 @@ C:\Users\<user>\Documents\Visual Studio 18\Templates\ProjectTemplates
 dotnet restore
 ```
 
-2. dll signing ([EADN signing guide](EADN-Signing-Script-V1.8/EADN_signing_guide-Eplan_Cloud.pdf))
+2. dll signing ([EADN signing guide](../EADN-Signing-Script-V1.8/EADN_signing_guide-Eplan_Cloud.pdf))
 
 	1. create conditional compilation for Debug/Release mode respectively (only sign in Release mode)
 
