@@ -57,4 +57,9 @@
     <Compile Include="WindowsUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)"=="Release" (
+    xcopy /y "$(TargetPath)" "$(SolutionDir)EPLAN_ADDIN_TEMPLATE\DLLs\"
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>
