@@ -1,4 +1,10 @@
-# EPLAN_DEV
+# EPLAN_DEV_Wizards
+
+<p align="center">
+    <a href="https://github.com/bingyongcao/EPLAN_DEV_Wizards/blob/main/README-cn.md">中文</a>
+    ❤
+    <a href="https://github.com/bingyongcao/EPLAN_DEV_Wizards/blob/main/README.md">English</a>
+</p>
 
 This is a repo of EPLAN .NET Wizards for Visual Studio, including 
 
