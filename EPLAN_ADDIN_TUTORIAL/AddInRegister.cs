@@ -16,37 +16,34 @@ namespace EPLAN_API_TUTORIAL
             var ribbonBar = new RibbonBar();
             var newTab = ribbonBar.AddTab(m_newTabName);
             var cmdGroup = newTab.AddCommandGroup(m_commandGroupName, 0);
-            RibbonCommandInfo projCommandInfo = new RibbonCommandInfo("ProjInfo", ProjAction.ActionName) 
+
+            cmdGroup.AddCommand(new RibbonCommandInfo("ProjInfo", ProjAction.ActionName)
             {
                 Description = "",
                 IndexButtonPosition = 0,
                 Icon = new RibbonIcon(CommandIcon.Octagon_0)
-            };
-            cmdGroup.AddCommand(projCommandInfo);
+            });
 
-            RibbonCommandInfo structCommandInfo = new RibbonCommandInfo("StructInfo", StructAction.ActionName)
+            cmdGroup.AddCommand(new RibbonCommandInfo("StructInfo", StructAction.ActionName)
             {
                 Description = "",
                 IndexButtonPosition = 1,
                 Icon = new RibbonIcon(CommandIcon.Octagon_1)
-            };
-            cmdGroup.AddCommand(structCommandInfo);
+            });
 
-            RibbonCommandInfo pageCommandInfo = new RibbonCommandInfo("PageInfo", PageAction.ActionName)
+            cmdGroup.AddCommand(new RibbonCommandInfo("PageInfo", PageAction.ActionName)
             {
                 Description = "",
                 IndexButtonPosition = 2,
                 Icon = new RibbonIcon(Properties.Resources.airplay)
-            };
-            cmdGroup.AddCommand(pageCommandInfo);
+            });
 
-            RibbonCommandInfo mdCommandInfo = new RibbonCommandInfo("MasterDataInfo", MasterDataAction.ActionName)
+            cmdGroup.AddCommand(new RibbonCommandInfo("MasterDataInfo", MasterDataAction.ActionName)
             {
                 Description = "",
                 IndexButtonPosition = 3,
                 Icon = new RibbonIcon(CommandIcon.Octagon_2)
-            };
-            cmdGroup.AddCommand(mdCommandInfo);
+            });
 
             new Decider().Decide(
                 EnumDecisionType.eOkDecision,

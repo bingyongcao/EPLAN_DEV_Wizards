@@ -16,13 +16,12 @@ namespace EPLAN_ADDIN_TEMPLATE
             var ribbonBar = new RibbonBar();
             var newTab = ribbonBar.AddTab(m_newTabName);
             var cmdGroup = newTab.AddCommandGroup(m_commandGroupName, 0);
-            RibbonCommandInfo ribbonCommandInfo = new RibbonCommandInfo(m_commandName, DefaultAction.ActionName)
+            cmdGroup.AddCommand(new RibbonCommandInfo(m_commandName, DefaultAction.ActionName)
             {
                 Description = "",
                 IndexButtonPosition = 0,
                 Icon = new RibbonIcon(GuiUtility.ReplacePrimaryColor(Properties.Resources.airplay))
-            };
-            cmdGroup.AddCommand(ribbonCommandInfo);
+            });
 
             new Decider().Decide(
                 EnumDecisionType.eOkDecision,
@@ -63,6 +62,5 @@ namespace EPLAN_ADDIN_TEMPLATE
         public string m_newTabName = "EPLAN_ADDIN_TEMPLATE";
         public string m_commandGroupName = "Common";
         public string m_commandName = "DefaultCommand";
-        public const string PRIMARY_COLOR = "currentColor";
     }
 }
