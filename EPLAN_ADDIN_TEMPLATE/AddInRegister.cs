@@ -1,4 +1,5 @@
 ﻿using Eplan.EplApi.ApplicationFramework;
+using Eplan.EplApi.Base;
 using Eplan.EplApi.Gui;
 using EplanUtilities;
 using System.Linq;
@@ -10,11 +11,7 @@ namespace EPLAN_ADDIN_TEMPLATE
         public bool OnRegister(ref bool bLoadOnStart)
         {
             bLoadOnStart = true;
-            CleanRibbonTab(m_newTabName);
-
-            // Set svg icon color based on the EPLAN color theme
-            string primaryColor = "#464646";
-            if (SettingUtility.GetEplanColorTheme() == WindowsTheme.Dark) primaryColor = "#E9EAEA";
+            GuiUtility.CleanCustomRibbonTab(m_newTabName);
 
             var ribbonBar = new RibbonBar();
             var newTab = ribbonBar.AddTab(m_newTabName);
@@ -23,23 +20,31 @@ namespace EPLAN_ADDIN_TEMPLATE
             {
                 Description = "",
                 IndexButtonPosition = 0,
-                Icon = new RibbonIcon(Properties.Resources.airplay.Replace(PRIMARY_COLOR, primaryColor))
+                Icon = new RibbonIcon(GuiUtility.ReplacePrimaryColor(Properties.Resources.airplay))
             };
             cmdGroup.AddCommand(ribbonCommandInfo);
+
+            new Decider().Decide(
+                EnumDecisionType.eOkDecision,
+                $"<{m_newTabName}> addin registered successfully!",
+                "Tip",
+                EnumDecisionReturn.eOK,
+                EnumDecisionReturn.eOK);
+
             return true;
         }
         public bool OnUnregister()
         {
-            CleanRibbonTab(m_newTabName);
-            return true;
-        }
+            GuiUtility.CleanCustomRibbonTab(m_newTabName);
 
-        void CleanRibbonTab(string tabName)
-        {
-            var newTab = new RibbonBar().Tabs
-                .FirstOrDefault(item => item.Name == tabName);
-            if (newTab != null)
-                newTab.Remove();
+            new Decider().Decide(
+                EnumDecisionType.eOkDecision,
+                $"<{m_newTabName}> addin unregistered successfully!",
+                "Tip",
+                EnumDecisionReturn.eOK,
+                EnumDecisionReturn.eOK);
+
+            return true;
         }
 
         public bool OnInit()

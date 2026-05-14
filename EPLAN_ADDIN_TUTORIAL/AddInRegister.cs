@@ -1,5 +1,7 @@
 ﻿using Eplan.EplApi.ApplicationFramework;
+using Eplan.EplApi.Base;
 using Eplan.EplApi.Gui;
+using EplanUtilities;
 using System.Linq;
 
 namespace EPLAN_API_TUTORIAL
@@ -9,7 +11,7 @@ namespace EPLAN_API_TUTORIAL
         public bool OnRegister(ref bool bLoadOnStart)
         {
             bLoadOnStart = true;
-            CleanRibbonTab(m_newTabName);
+            GuiUtility.CleanCustomRibbonTab(m_newTabName);
 
             var ribbonBar = new RibbonBar();
             var newTab = ribbonBar.AddTab(m_newTabName);
@@ -46,20 +48,27 @@ namespace EPLAN_API_TUTORIAL
             };
             cmdGroup.AddCommand(mdCommandInfo);
 
+            new Decider().Decide(
+                EnumDecisionType.eOkDecision,
+                $"<{m_newTabName}> addin registered successfully!",
+                "Tip",
+                EnumDecisionReturn.eOK,
+                EnumDecisionReturn.eOK);
+
             return true;
         }
         public bool OnUnregister()
         {
-            CleanRibbonTab(m_newTabName);
-            return true;
-        }
+            GuiUtility.CleanCustomRibbonTab(m_newTabName);
 
-        void CleanRibbonTab(string tabName)
-        {
-            var newTab = new RibbonBar().Tabs
-                .FirstOrDefault(item => item.Name == tabName);
-            if (newTab != null)
-                newTab.Remove();
+            new Decider().Decide(
+                EnumDecisionType.eOkDecision,
+                $"<{m_newTabName}> addin unregistered successfully!",
+                "Tip",
+                EnumDecisionReturn.eOK,
+                EnumDecisionReturn.eOK);
+
+            return true;
         }
 
         public bool OnInit()
