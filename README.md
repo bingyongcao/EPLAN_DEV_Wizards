@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://github.com/bingyongcao/EPLAN_DEV_Wizards/blob/main/README-cn.md">中文</a>
-    ❤
+    |
     <a href="https://github.com/bingyongcao/EPLAN_DEV_Wizards/blob/main/README.md">English</a>
 </p>
 
@@ -14,17 +14,46 @@ This is a repo of EPLAN .NET Wizards for Visual Studio, including
 
 `EPLAN_ADDIN_TUTORIAL`: tutorial for creating EPLAN add-ins,
 
-`EPLAN_SCRIPT_TUTORIAL`: tutorial for creating EPLAN scripts.
+`EPLAN_SCRIPT_TUTORIAL`: tutorial for creating EPLAN scripts,
+
+`EPLAN_UTILITIES`: shared helper library.
+
+## Repository structure
+
+- `EPLAN_ADDIN_TEMPLATE` - Visual Studio project template for EPLAN add-ins, with WPF, HandyControl, CommunityToolkit.Mvvm runtime APIs, and Serilog preconfigured.
+- `EPLAN_ADDIN_TEMPLATE.Wizard` - Visual Studio template wizard that sets the default assembly name and debug profile for new add-in projects.
+- `EPLAN_ADDIN_TUTORIAL` - add-in examples for project properties, pages, and master data.
+- `EPLAN_SCRIPT_TUTORIAL` - script examples for ribbon UI, context menus, event handlers, settings, and command-line script execution.
+- `EPLAN_UTILITIES` - reusable helpers for EPLAN settings, Windows theme detection, property access and so on.
+- `install-template.ps1` - helper script that copies the exported template zip and wizard assembly into the Visual Studio 2026 template locations.
+
+Each project also contains its own `README.md` with more focused instructions.
 
 ## Offline API help
 
 ### Installer
 
-- [offline API installer for 2026](../Resources/Eplan_API_2026.zip)
+- [offline API installer for 2026](Resources/Eplan_API_2026.zip)
 
 - follow the official installation guide: [EPLAN API 2026 Help Structure](https://www.eplan.help/en-us/Infoportal/Content/api/2026/Help%20structure.html)
 
 - after installation, one more thing you can do is binding the `F1` with `EPLAN API Help` in Visual Studio, so that you can directly open the API help by pressing `F1` when coding.
+
+## Template workflow
+
+1. Export `EPLAN_ADDIN_TEMPLATE` as a Visual Studio project template.
+2. Build `EPLAN_ADDIN_TEMPLATE.Wizard`.
+3. Add the wizard extension entry into the exported `.vstemplate` file.
+4. Copy the generated template zip into your Visual Studio 2026 template folder.
+5. Copy `EPLAN_ADDIN_TEMPLATE.Wizard.dll` into the Visual Studio `PublicAssemblies` folder.
+
+For the copy step, you can use `install-template.ps1` after adjusting the hard-coded paths to your local environment.
+
+The custom wizard currently applies these defaults when a new add-in project is created:
+
+- `AssemblyName` = `SAC.EplAddIn.<ProjectName>`
+- Debug start action = `D:\Eplan\Platform\2026.0.3\Bin\EPLAN.exe`
+- Debug start arguments = `/Variant:"Electric P8"`
 
 ## Tech stack we recommend
 
@@ -80,6 +109,3 @@ EPLAN color chart:
   </div>
   
 </div>
-
-## License
-This tutorial is provided as-is for educational purposes.
