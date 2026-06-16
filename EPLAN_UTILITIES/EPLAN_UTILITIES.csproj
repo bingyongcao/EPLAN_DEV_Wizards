@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="GuiUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FunctionUtility.cs" />
     <Compile Include="PropertyUtility.cs" />
     <Compile Include="SettingUtility.cs" />
     <Compile Include="WindowsUtility.cs" />
