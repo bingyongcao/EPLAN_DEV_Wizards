@@ -8,22 +8,21 @@ namespace EplanUtilities
 {
     public static class SelectionUtility
     {
-        public static PropertyValue GetWorkingCubicle()
+        public static Page GetWorkingPage()
         {
             var sel = new SelectionSet();
             var openPages = sel.OpenedPages;
 
             if (openPages.Length > 0)
             {
-                var activePage = openPages[0];
-                return activePage.Properties.DESIGNATION_PLANT;
+                return openPages[0];
             }
             else
             {
                 var selectedPages = sel.GetSelectedPages();
                 if (selectedPages.Length == 1)
                 {
-                    return selectedPages[0].Properties.DESIGNATION_PLANT;
+                    return selectedPages[0];
                 }
                 else return null;
             }
