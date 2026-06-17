@@ -118,6 +118,7 @@
     <Compile Include="Actions\StructAction.cs" />
     <Compile Include="Actions\ProjAction.cs" />
     <Compile Include="AddInRegister.cs" />
+    <Compile Include="AssemblyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ProjectPropertyModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -148,8 +149,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\CommunityToolkit.Mvvm.8.4.2\analyzers\dotnet\roslyn5.0\cs\CommunityToolkit.Mvvm.SourceGenerators.dll" />
-    <Analyzer Include="..\packages\CommunityToolkit.Mvvm.8.4.2\analyzers\dotnet\roslyn5.0\cs\CommunityToolkit.Mvvm.CodeFixers.dll" />
+    <Analyzer Include="..\packages\CommunityToolkit.Mvvm.8.4.2\analyzers\dotnet\roslyn4.12\cs\CommunityToolkit.Mvvm.SourceGenerators.dll" />
+    <Analyzer Include="..\packages\CommunityToolkit.Mvvm.8.4.2\analyzers\dotnet\roslyn4.12\cs\CommunityToolkit.Mvvm.CodeFixers.dll" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

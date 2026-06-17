@@ -39,12 +39,6 @@ namespace EplanUtilities
             }
             catch (System.Exception ex)
             {
-                new Decider().Decide(
-                    EnumDecisionType.eOkDecision,
-                    $"{ex.Message}",
-                    "Error",
-                    EnumDecisionReturn.eOK,
-                    EnumDecisionReturn.eOK);
                 return null;
             }
         }

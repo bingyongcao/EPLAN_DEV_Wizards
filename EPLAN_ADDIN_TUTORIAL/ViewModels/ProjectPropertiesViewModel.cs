@@ -58,7 +58,7 @@ namespace EPLAN_API_TUTORIAL.ViewModels
                                     PropertyId = indexProp.Id.AsInt,
                                     Index = i,
                                     PropertyName = indexProp.Definition.Name,
-                                    PropertyValue = PropertyUtility.GetPropertyValueString(indexProp, out string errorMsg) ?? string.Empty
+                                    PropertyValue = PropertyUtility.GetPropertyValueString(indexProp) ?? string.Empty
                                 });
                             }
                         }
@@ -72,7 +72,7 @@ namespace EPLAN_API_TUTORIAL.ViewModels
                                 PropertyId = propValue.Id.AsInt,
                                 Index = null,
                                 PropertyName = propValue.Definition.Name,
-                                PropertyValue = PropertyUtility.GetPropertyValueString(propValue, out string errorMsg) ?? string.Empty
+                                PropertyValue = PropertyUtility.GetPropertyValueString(propValue) ?? string.Empty
                             });
                         }
                     }

@@ -8,6 +8,16 @@ namespace EPLAN_API_TUTORIAL
 {
     public class AddInRegister : IEplAddIn
     {
+        static AddInRegister()
+        {
+            // EPLAN loads the add-in into its own process; the CLR's default
+            // probing path doesn't include the add-in's directory, so hook the
+            // AppDomain.AssemblyResolve event as early as possible to redirect
+            // dependency lookups (EPLAN_UTILITIES, third-party libs under DLLs\)
+            // to the add-in's own location.
+            AssemblyResolver.Register();
+        }
+
         public bool OnRegister(ref bool bLoadOnStart)
         {
             bLoadOnStart = true;
