@@ -63,7 +63,7 @@ The custom wizard currently applies these defaults when a new add-in project is 
 - MVVM framework：`CommunityToolkit.Mvvm`
 - Logging: `Serilog`
 
-⚠️**Note**: the source generator feature of CommunityToolkit.Mvvm requires SDK-style projects, so just use the toolkit's runtime API directly.
+⚠️**Note**: the `CommunityToolkit.Mvvm` source generator requires the Analyzer path in `.csproj` to match the Roslyn version of the local IDE.
 
 ## SVG Icon
 

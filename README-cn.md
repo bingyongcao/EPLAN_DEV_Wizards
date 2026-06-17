@@ -63,7 +63,7 @@
 - MVVM 框架：`CommunityToolkit.Mvvm`
 - 日志：`Serilog`
 
-⚠️**注意**：CommunityToolkit.Mvvm 的源生成器功能要求项目为 SDK-style，因此这里请直接使用工具包的运行时 API。
+⚠️**注意**：`CommunityToolkit.Mvvm` 源生成器要求 `.csproj` 里 Analyzer 路径与本地 IDE 的 Roslyn 版本需一致。
 
 ## SVG 图标
 

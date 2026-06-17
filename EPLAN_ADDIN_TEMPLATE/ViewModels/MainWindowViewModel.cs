@@ -7,46 +7,22 @@ using System.Collections.ObjectModel;
 
 namespace EPLAN_ADDIN_TEMPLATE.ViewModels
 {
-    public class MainWindowViewModel : ObservableObject
+    public partial class MainWindowViewModel : ObservableObject
     {
-        private Eplan.EplApi.DataModel.Project activeProj;
-
-        public IRelayCommand ConfirmCommand { get; }
-
-        public MainWindowViewModel()
-        {
-            activeProj = new SelectionSet().GetCurrentProject(true);
-
-            ConfirmCommand = new RelayCommand(Confirm, CanConfirm);
-        }
+        private readonly Eplan.EplApi.DataModel.Project activeProj = new SelectionSet().GetCurrentProject(true);
 
         public ObservableCollection<MDPart> MDParts { get; } = new ObservableCollection<MDPart>();
 
-        private MDPart _selectedMDPart;
-        public MDPart SelectedMDPart
-        {
-            get => _selectedMDPart;
-            set
-            {
-                if (SetProperty(ref _selectedMDPart, value))
-                    ConfirmCommand.NotifyCanExecuteChanged();
-            }
-        }
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor("ConfirmCommand")]
+        private MDPart selectedMDPart;
 
-
-        private void Confirm()
-        {
-            new Decider().Decide(
-                EnumDecisionType.eOkDecision, 
-                "Button was clicked", 
-                "Tip", 
-                EnumDecisionReturn.eOK, 
-                EnumDecisionReturn.eOK);
-        }
-
-        private bool CanConfirm()
-        {
-            return true;
-        }
+        [RelayCommand]
+        private void Confirm() => new Decider().Decide(
+            EnumDecisionType.eOkDecision,
+            "Button was clicked",
+            "Tip",
+            EnumDecisionReturn.eOK,
+            EnumDecisionReturn.eOK);
     }
 }
