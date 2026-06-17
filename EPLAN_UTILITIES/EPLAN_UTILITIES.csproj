@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageUtility.cs" />
     <Compile Include="SelectionUtility.cs" />
     <Compile Include="GuiUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

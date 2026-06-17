@@ -7,21 +7,8 @@ namespace EplanUtilities
 {
     public static class PropertyUtility
     {
-        public static PropertyValue GetPropValueByInt<T>(T obj, int propInt) where T : StorableObject
+        public static string GetPropertyValueString(PropertyValue pValue)
         {
-            var propId = obj.Properties.ExistingIds
-             .Where(anyPropertyId => anyPropertyId.AsInt == propInt)
-             .FirstOrDefault();
-
-            if (propId == null) return null;
-
-            return obj.Properties[propId];
-        }
-
-        public static string GetPropertyValueString(PropertyValue pValue, out string errorMsg)
-        {
-            errorMsg = string.Empty;
-
             if (pValue == null || pValue.IsEmpty) return null;
 
             try
@@ -52,7 +39,12 @@ namespace EplanUtilities
             }
             catch (System.Exception ex)
             {
-                errorMsg = ex.ToString();
+                new Decider().Decide(
+                    EnumDecisionType.eOkDecision,
+                    $"{ex.Message}",
+                    "Error",
+                    EnumDecisionReturn.eOK,
+                    EnumDecisionReturn.eOK);
                 return null;
             }
         }
