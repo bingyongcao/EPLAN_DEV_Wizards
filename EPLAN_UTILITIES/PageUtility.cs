@@ -50,5 +50,32 @@ namespace EplanUtilities
                 return null;
             }
         }
+
+        public static Page[] GetFilterPages(
+            Project project,
+            string exactName)
+        {
+            try
+            {
+                PagesFilter filter = new PagesFilter()
+                {
+                    Name = exactName,
+                    ExactNameMatching = true
+                };
+
+                return new DMObjectsFinder(project)
+                    .GetPages(filter).ToArray();
+            }
+            catch (System.Exception ex)
+            {
+                new Decider().Decide(
+                    EnumDecisionType.eOkDecision,
+                    $"{ex.Message}",
+                    "Error",
+                    EnumDecisionReturn.eOK,
+                    EnumDecisionReturn.eOK);
+                return null;
+            }
+        }
     }
 }

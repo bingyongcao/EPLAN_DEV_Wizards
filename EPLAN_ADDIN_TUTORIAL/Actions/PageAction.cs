@@ -43,7 +43,7 @@ namespace EPLAN_API_TUTORIAL
                 var pageDescrProp = page.Properties.PAGE_NOMINATIOMN;
 
                 // get page description by property int
-                pageDescrProp = EplanUtilities.PropertyUtility.GetPropValueByInt(page, 11011);
+                pageDescrProp = page.Properties[11011];
 
                 FunctionsFilter functionsFilter = new FunctionsFilter()
                 {

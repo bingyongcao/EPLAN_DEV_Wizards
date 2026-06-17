@@ -1,6 +1,7 @@
 using Eplan.EplApi.Base;
 using Eplan.EplApi.DataModel;
 using Eplan.EplApi.DataModel.MasterData;
+using Eplan.EplApi.HEServices;
 using System.Linq;
 
 namespace EplanUtilities
@@ -45,6 +46,46 @@ namespace EplanUtilities
                 {
                     subFunc.PropertyPlacementsSchemas.Selected =
                     subFunc.PropertyPlacementsSchemas.All.First(s => s.Name == placeSchemaName);
+                }
+
+                return true;
+            }
+            catch (System.Exception ex)
+            {
+                new Decider().Decide(
+                    EnumDecisionType.eOkDecision,
+                    $"{ex.Message}",
+                    "Error",
+                    EnumDecisionReturn.eOK,
+                    EnumDecisionReturn.eOK);
+                return false;
+            }
+        }
+
+        public static bool CreateDevice(
+            Page targetPage,
+            string strPartNumber,
+            string visibleName,
+            SymbolVariant sv,
+            PointD loc,
+            string placeSchemaName = "")
+        {
+            try
+            {
+                DeviceService deviceService = new DeviceService();
+
+                var funcs = deviceService.CreateDevice(strPartNumber, "1", targetPage, loc);
+
+                Function createdFunc = funcs[0];
+
+                createdFunc.SymbolVariant = sv;
+                createdFunc.VisibleName = visibleName;
+                createdFunc.Name = $"=={targetPage.Properties.DESIGNATION_FUNCTIONALASSIGNMENT}={targetPage.Properties.DESIGNATION_PLANT}-{visibleName}";
+
+                if (!string.IsNullOrEmpty(placeSchemaName))
+                {
+                    createdFunc.PropertyPlacementsSchemas.Selected =
+                    createdFunc.PropertyPlacementsSchemas.All.First(s => s.Name == placeSchemaName);
                 }
 
                 return true;
