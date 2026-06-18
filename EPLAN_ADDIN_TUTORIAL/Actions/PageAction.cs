@@ -15,6 +15,19 @@ namespace EPLAN_API_TUTORIAL
         {
             Project activeProj = new SelectionSet().GetCurrentProject(true);
 
+            #region create page
+            Page overviewPage = new Page(activeProj, DocumentTypeManager.DocumentType.Overview, new PagePropertyList()
+            {
+                DESIGNATION_DOCTYPE = "EFA",
+                DESIGNATION_PLANT = "P01",
+                DESIGNATION_FUNCTIONALASSIGNMENT = "S1",
+                PAGE_NAME = 1
+            });
+
+            // set page description property after page creation
+            overviewPage.Properties.PAGE_NOMINATIOMN = "page description";
+            #endregion
+
             // filter pages
             PagesFilter pagesFilter = new PagesFilter()
             {
@@ -54,13 +67,6 @@ namespace EPLAN_API_TUTORIAL
 
                 Function[] filterFuncs = new DMObjectsFinder(activeProj)
                     .GetFunctions(functionsFilter);
-
-                new Decider().Decide(
-                    EnumDecisionType.eOkDecision,
-                    $"count of placed plc terminals in <{page.Name}> page: {filterFuncs.Length}\n",
-                    "PageInfo",
-                    EnumDecisionReturn.eOK,
-                    EnumDecisionReturn.eOK);
             }
             
             return true;
