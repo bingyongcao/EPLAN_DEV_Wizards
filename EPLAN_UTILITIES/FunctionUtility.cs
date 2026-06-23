@@ -8,7 +8,7 @@ namespace EplanUtilities
 {
     public static class FunctionUtility
     {
-        public static bool CreateSubFunc(
+        public static Function CreateSubFunc(
             Function parentFunc, 
             Page targetPage, 
             SymbolVariant sv,
@@ -48,7 +48,7 @@ namespace EplanUtilities
                     subFunc.PropertyPlacementsSchemas.All.First(s => s.Name == placeSchemaName);
                 }
 
-                return true;
+                return subFunc;
             }
             catch (System.Exception ex)
             {
@@ -58,11 +58,11 @@ namespace EplanUtilities
                     "Error",
                     EnumDecisionReturn.eOK,
                     EnumDecisionReturn.eOK);
-                return false;
+                return null;
             }
         }
 
-        public static bool CreateDevice(
+        public static Function CreateDevice(
             Page targetPage,
             string strPartNumber,
             string visibleName,
@@ -88,7 +88,7 @@ namespace EplanUtilities
                     createdFunc.PropertyPlacementsSchemas.All.First(s => s.Name == placeSchemaName);
                 }
 
-                return true;
+                return createdFunc;
             }
             catch (System.Exception ex)
             {
@@ -98,7 +98,7 @@ namespace EplanUtilities
                     "Error",
                     EnumDecisionReturn.eOK,
                     EnumDecisionReturn.eOK);
-                return false;
+                return null;
             }
         }
     }
