@@ -34,7 +34,7 @@ namespace EplanUtilities
                     efaFilter.DocumentType = docType;
                 }
 
-                new PagesFilter().SetFilteredPropertyList(ppl);
+                efaFilter.SetFilteredPropertyList(ppl);
 
                 return new DMObjectsFinder(project)
                     .GetPages(efaFilter).ToArray();
