@@ -1,13 +1,11 @@
 using Eplan.EplApi.Base;
 using Eplan.EplApi.DataModel;
-using System.Linq;
-using StorableObject = Eplan.EplApi.DataModel.StorableObject;
 
 namespace EplanUtilities
 {
     public static class PropertyUtility
     {
-        public static string GetPropertyValueString(PropertyValue pValue)
+        public static string GetValueString(PropertyValue pValue)
         {
             if (pValue == null || pValue.IsEmpty) return null;
 

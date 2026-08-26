@@ -1,10 +1,7 @@
 ﻿using Eplan.EplApi.Gui;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Eplan.EplApi.Gui.RibbonTab;
 
 namespace EplanUtilities
@@ -36,10 +33,15 @@ namespace EplanUtilities
     public static class GuiUtility
     {
         /// <summary>
-        /// default color keyword in lucide icon.
+        /// default color keyword in lucide svg icon.
         /// </summary>
         public const string PRIMARY_COLOR = "currentColor";
 
+        /// <summary>
+        /// replace svg icon color by windows theme
+        /// </summary>
+        /// <param name="svgContent"></param>
+        /// <returns></returns>
         public static string ReplacePrimaryColor(string svgContent)
         {
             return svgContent.Replace(PRIMARY_COLOR, GetPrimaryColorByTheme());
@@ -47,8 +49,8 @@ namespace EplanUtilities
 
         public static string GetPrimaryColorByTheme()
         {
-            return SettingUtility.GetEplanColorTheme() == WindowsTheme.Dark ? 
-                GetHexCode(EplanColor.DarkPrimary) : 
+            return SettingUtility.GetEplanColorTheme() == WindowsTheme.Dark ?
+                GetHexCode(EplanColor.DarkPrimary) :
                 GetHexCode(EplanColor.LightPrimary);
         }
 
@@ -66,6 +68,10 @@ namespace EplanUtilities
                 .FirstOrDefault(item => item.Identifier == defaultRibbon);
         }
 
+        /// <summary>
+        /// remove ribbon tab by name
+        /// </summary>
+        /// <param name="tabName"></param>
         public static void CleanCustomRibbonTab(string tabName)
         {
             int maxValue = Enum.GetValues(typeof(DefaultRibbonTabs))
