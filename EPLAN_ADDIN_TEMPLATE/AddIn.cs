@@ -1,15 +1,13 @@
 ﻿using Eplan.EplApi.ApplicationFramework;
 using Eplan.EplApi.Base;
 using Eplan.EplApi.Gui;
-using Eplan.EplApi.Starter;
 using EplanUtilities;
-using System.Linq;
 
 namespace EPLAN_ADDIN_TEMPLATE
 {
-    public class AddInRegister : IEplAddIn
+    public class AddIn : IEplAddIn
     {
-        static AddInRegister()
+        static AddIn()
         {
             // EPLAN loads the add-in into its own process; the CLR's default
             // probing path doesn't include the add-in's directory, so hook the
