@@ -1,33 +1,21 @@
 # EPLAN_DEV_Wizards
 
 <p align="center">
-    <a href="https://github.com/bingyongcao/EPLAN_DEV_Wizards/blob/main/README-cn.md">中文</a>
+    <a href="https://github.com/bingyongcao/eplan-addin-template/blob/main/README-cn.md">中文</a>
     |
-    <a href="https://github.com/bingyongcao/EPLAN_DEV_Wizards/blob/main/README.md">English</a>
+    <a href="https://github.com/bingyongcao/eplan-addin-template/blob/main/README.md">English</a>
 </p>
 
 这是一个面向 Visual Studio 的 EPLAN .NET 向导仓库，包含：
 
 `EPLAN_ADDIN_TEMPLATE`：导出为 Visual Studio 项目模板，
 
-`EPLAN_ADDIN_TEMPLATE.Wizard`：用于 Add-in 模板的自定义向导，在模板创建期间运行，
-
-`EPLAN_ADDIN_TUTORIAL`：用于创建 EPLAN Add-in 的教程，
-
-`EPLAN_SCRIPT_TUTORIAL`：用于创建 EPLAN 脚本的教程，
-
-`EPLAN_UTILITIES`：共享辅助类库。
+`EPLAN_ADDIN_TEMPLATE.Wizard`：用于 Add-in 模板的自定义向导，在模板创建期间运行。
 
 ## 仓库结构
 
 - `EPLAN_ADDIN_TEMPLATE` - EPLAN Add-in 的 Visual Studio 项目模板，预置了 WPF、HandyControl、CommunityToolkit.Mvvm 运行时 API 和 Serilog。
 - `EPLAN_ADDIN_TEMPLATE.Wizard` - Visual Studio 模板向导，用于为新建 Add-in 项目设置默认程序集名称和调试配置。
-- `EPLAN_ADDIN_TUTORIAL` - Add-in 示例，涵盖项目属性、页面和主数据等内容。
-- `EPLAN_SCRIPT_TUTORIAL` - 脚本示例，涵盖 Ribbon UI、上下文菜单、事件处理、设置以及命令行执行脚本。
-- `EPLAN_UTILITIES` - 可复用的辅助工具，包含 EPLAN 设置、Windows 主题检测、属性访问等功能。
-- `install-template.ps1` - 辅助脚本，用于将导出的模板 zip 和向导程序集复制到 Visual Studio 2026 的模板目录。
-
-每个项目下也都包含各自的 `README.md`，用于提供更具体的说明。
 
 ## 离线 API 帮助
 
@@ -51,19 +39,9 @@
 
 当前自定义向导在创建新的 Add-in 项目时会自动应用以下默认值：
 
-- `AssemblyName` = `SAC.EplAddIn.<ProjectName>`
-- 调试启动操作 = `D:\Eplan\Platform\2026.0.3\Bin\EPLAN.exe`
+- `AssemblyName` = `Company.EplAddIn.<ProjectName>`
+- 调试启动操作 = `...\Bin\EPLAN.exe`
 - 调试启动参数 = `/Variant:"Electric P8"`
-
-## 推荐技术栈
-
-- 运行时：`.NET framework 4.8.1`
-- UI 框架：`WPF`
-- UI 风格：`HandyControl`
-- MVVM 框架：`CommunityToolkit.Mvvm`
-- 日志：`Serilog`
-
-⚠️**注意**：`CommunityToolkit.Mvvm` 源生成器要求 `.csproj` 里 Analyzer 路径与本地 IDE 的 Roslyn 版本需一致。
 
 ## SVG 图标
 

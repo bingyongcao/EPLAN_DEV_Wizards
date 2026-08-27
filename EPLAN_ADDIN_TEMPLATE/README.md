@@ -12,8 +12,8 @@ The custom wizard project is in `EPLAN_ADDIN_TEMPLATE.Wizard`.
 
 It applies these template defaults automatically:
 
-- `AssemblyName` = `SAC.EplAddIn.<ProjectName>`
-- Debug start action = `D:\Eplan\Platform\2026.0.3\Bin\EPLAN.exe`
+- `AssemblyName` = `Company.EplAddIn.<ProjectName>`
+- Debug start action = `...\Bin\EPLAN.exe`
 - Debug start arguments = `/Variant:"Electric P8"`
 
 ## How to make & install a template

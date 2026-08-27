@@ -1,33 +1,21 @@
 # EPLAN_DEV_Wizards
 
 <p align="center">
-    <a href="https://github.com/bingyongcao/EPLAN_DEV_Wizards/blob/main/README-cn.md">中文</a>
+    <a href="https://github.com/bingyongcao/eplan-addin-template/blob/main/README-cn.md">中文</a>
     |
-    <a href="https://github.com/bingyongcao/EPLAN_DEV_Wizards/blob/main/README.md">English</a>
+    <a href="https://github.com/bingyongcao/eplan-addin-template/blob/main/README.md">English</a>
 </p>
 
 This is a repo of EPLAN .NET Wizards for Visual Studio, including 
 
 `EPLAN_ADDIN_TEMPLATE`: export as visual studio template, 
 
-`EPLAN_ADDIN_TEMPLATE.Wizard`: custom wizard for the add-in template, running during template creation,
-
-`EPLAN_ADDIN_TUTORIAL`: tutorial for creating EPLAN add-ins,
-
-`EPLAN_SCRIPT_TUTORIAL`: tutorial for creating EPLAN scripts,
-
-`EPLAN_UTILITIES`: shared helper library.
+`EPLAN_ADDIN_TEMPLATE.Wizard`: custom wizard for the add-in template, running during template creation.
 
 ## Repository structure
 
 - `EPLAN_ADDIN_TEMPLATE` - Visual Studio project template for EPLAN add-ins, with WPF, HandyControl, CommunityToolkit.Mvvm runtime APIs, and Serilog preconfigured.
 - `EPLAN_ADDIN_TEMPLATE.Wizard` - Visual Studio template wizard that sets the default assembly name and debug profile for new add-in projects.
-- `EPLAN_ADDIN_TUTORIAL` - add-in examples for project properties, pages, and master data.
-- `EPLAN_SCRIPT_TUTORIAL` - script examples for ribbon UI, context menus, event handlers, settings, and command-line script execution.
-- `EPLAN_UTILITIES` - reusable helpers for EPLAN settings, Windows theme detection, property access and so on.
-- `install-template.ps1` - helper script that copies the exported template zip and wizard assembly into the Visual Studio 2026 template locations.
-
-Each project also contains its own `README.md` with more focused instructions.
 
 ## Offline API help
 
@@ -51,19 +39,9 @@ For the copy step, you can use `install-template.ps1` after adjusting the hard-c
 
 The custom wizard currently applies these defaults when a new add-in project is created:
 
-- `AssemblyName` = `SAC.EplAddIn.<ProjectName>`
-- Debug start action = `D:\Eplan\Platform\2026.0.3\Bin\EPLAN.exe`
+- `AssemblyName` = `Company.EplAddIn.<ProjectName>`
+- Debug start action = `...\Bin\EPLAN.exe`
 - Debug start arguments = `/Variant:"Electric P8"`
-
-## Tech stack we recommend
-
-- Runtime: `.NET framework 4.8.1`
-- UI framework: `WPF`
-- UI style: `HandyControl`
-- MVVM framework：`CommunityToolkit.Mvvm`
-- Logging: `Serilog`
-
-⚠️**Note**: the `CommunityToolkit.Mvvm` source generator requires the Analyzer path in `.csproj` to match the Roslyn version of the local IDE.
 
 ## SVG Icon
 

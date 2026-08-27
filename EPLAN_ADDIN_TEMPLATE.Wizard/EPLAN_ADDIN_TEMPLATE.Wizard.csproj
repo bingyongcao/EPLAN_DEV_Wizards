@@ -54,6 +54,14 @@
     <Compile Include="TemplateWizard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="detect-eplan.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureVisualStudioAssemblies" BeforeTargets="ResolveAssemblyReferences">
     <Error Condition="'$(VsPublicAssembliesPath)' == ''" Text="Unable to locate Visual Studio PublicAssemblies. Set the VsPublicAssembliesPath property or build from the Visual Studio developer environment." />

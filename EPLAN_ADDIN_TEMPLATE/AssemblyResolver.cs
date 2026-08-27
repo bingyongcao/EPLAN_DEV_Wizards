@@ -21,7 +21,7 @@ namespace EPLAN_ADDIN_TEMPLATE
     /// This resolver hooks that event and probes:
     /// </para>
     /// <list type="number">
-    ///   <item>The add-in's own directory (where <c>SAC.EplAddIn.Tools.dll</c> lives).</item>
+    ///   <item>The add-in's own directory.</item>
     ///   <item>A <c>DLLs\</c> subfolder next to it (matches this project's layout).</item>
     /// </list>
     /// <para>
@@ -62,7 +62,7 @@ namespace EPLAN_ADDIN_TEMPLATE
             {
                 // Path probing is best-effort; do not let init failures escape
                 // a static constructor (which would tear down the AppDomain).
-                Trace.WriteLine($"[SAC.AssemblyResolver] init error: {ex}");
+                Trace.WriteLine($"[AssemblyResolver] init error: {ex}");
             }
         }
 
@@ -77,7 +77,7 @@ namespace EPLAN_ADDIN_TEMPLATE
 
             AppDomain.CurrentDomain.AssemblyResolve += OnAssemblyResolve;
             Trace.WriteLine(
-                $"[SAC.AssemblyResolver] registered. AddIn dir = '{_addInDirectory}', DLLs dir = '{_dllsDirectory}'.");
+                $"[AssemblyResolver] registered. AddIn dir = '{_addInDirectory}', DLLs dir = '{_dllsDirectory}'.");
         }
 
         private static Assembly OnAssemblyResolve(object sender, ResolveEventArgs args)
