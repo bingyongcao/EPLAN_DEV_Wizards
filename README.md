@@ -1,4 +1,4 @@
-# EPLAN_DEV_Wizards
+# eplan-addin-template
 
 <p align="center">
     <a href="https://github.com/bingyongcao/eplan-addin-template/blob/main/README-cn.md">中文</a>
@@ -6,16 +6,75 @@
     <a href="https://github.com/bingyongcao/eplan-addin-template/blob/main/README.md">English</a>
 </p>
 
-This is a repo of EPLAN .NET Wizards for Visual Studio, including 
+This is a repo of EPLAN add-in template for Visual Studio, including 
 
 `EPLAN_ADDIN_TEMPLATE`: export as visual studio template, 
 
-`EPLAN_ADDIN_TEMPLATE.Wizard`: custom wizard for the add-in template, running during template creation.
+`EPLAN_ADDIN_TEMPLATE.Wizard`: custom wizard running during template creation.
 
-## Repository structure
+## Custom wizard
 
-- `EPLAN_ADDIN_TEMPLATE` - Visual Studio project template for EPLAN add-ins, with WPF, HandyControl, CommunityToolkit.Mvvm runtime APIs, and Serilog preconfigured.
-- `EPLAN_ADDIN_TEMPLATE.Wizard` - Visual Studio template wizard that sets the default assembly name and debug profile for new add-in projects.
+It applies these template defaults automatically:
+
+- `AssemblyName` = `Company.EplAddIn.<ProjectName>`
+- Debug start action = `EPLAN.exe` (path auto-detected by `detect-eplan.ps1`)
+- Debug start arguments = `/Variant:"Electric P8"`
+
+## How to install a template
+
+1. Project->Export template->Choose icon in solution directory
+2. build `EPLAN_ADDIN_TEMPLATE.Wizard`
+3. unzip the template, then edit the `.vstemplate` file and add the wizard extension inside VSTemplate tag
+
+```xml
+<WizardExtension>
+  <Assembly>EPLAN_ADDIN_TEMPLATE.Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Assembly>
+  <FullClassName>EPLAN_ADDIN_TEMPLATE.Wizard.TemplateWizard</FullClassName>
+</WizardExtension>
+```
+4. rezip the template, be care of the zip hierarchy
+
+5. install `EPLAN_ADDIN_TEMPLATE.Wizard.dll` and `detect-eplan.ps1` where Visual Studio can load template wizard assemblies, for example:
+
+```
+C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\PublicAssemblies
+```
+
+6. copy the template zip to the template folder:
+
+```
+C:\Users\<user>\Documents\Visual Studio 18\Templates\ProjectTemplates
+```
+
+## Where to find your template
+```
+C:\Users\<user>\Documents\Visual Studio 18\My Exported Templates
+C:\Users\<user>\Documents\Visual Studio 18\Templates\ProjectTemplates
+```
+
+## Something after creation from template
+
+1. restore packages
+
+```
+dotnet restore
+```
+
+2. dll signing ([EADN signing guide](../Resources/EADN-Signing-Script-V1.8/EADN_signing_guide-Eplan_Cloud.pdf))
+
+	1. create conditional compilation for Debug/Release mode respectively (only sign in Release mode)
+
+	1. bind your public key to the assembly and activate the "Delay sign only" flag
+
+	1. add signing command line into post-build event [PostBuildScript.ps1 provide by offical](../Resources/EADN-Signing-Script-V1.8/PostBuildScript.ps1)
+
+	```
+	powershell -ExecutionPolicy Bypass -file "<YourFolderName>\PostBuildScript.ps1" -baseUrl "https://api.eplan.com.cn/eadn-signing/v1.0" -comment "signing dll from $(USERNAME)" -accessToken "<YourPAT>" -assemblies "$(OutDir)$(AssemblyName).dll" -destinationPath "$(OutDir)." -deleteAfterwards
+	```
+
+	> where to get PAT
+	![PAT](./Resources/Snipaste_1.png)
+
 
 ## Offline API help
 
@@ -26,22 +85,6 @@ This is a repo of EPLAN .NET Wizards for Visual Studio, including
 - follow the official installation guide: [EPLAN API 2026 Help Structure](https://www.eplan.help/en-us/Infoportal/Content/api/2026/Help%20structure.html)
 
 - after installation, one more thing you can do is binding the `F1` with `EPLAN API Help` in Visual Studio, so that you can directly open the API help by pressing `F1` when coding.
-
-## Template workflow
-
-1. Export `EPLAN_ADDIN_TEMPLATE` as a Visual Studio project template.
-2. Build `EPLAN_ADDIN_TEMPLATE.Wizard`.
-3. Add the wizard extension entry into the exported `.vstemplate` file.
-4. Copy the generated template zip into your Visual Studio 2026 template folder.
-5. Copy `EPLAN_ADDIN_TEMPLATE.Wizard.dll` into the Visual Studio `PublicAssemblies` folder.
-
-For the copy step, you can use `install-template.ps1` after adjusting the hard-coded paths to your local environment.
-
-The custom wizard currently applies these defaults when a new add-in project is created:
-
-- `AssemblyName` = `Company.EplAddIn.<ProjectName>`
-- Debug start action = `...\Bin\EPLAN.exe`
-- Debug start arguments = `/Variant:"Electric P8"`
 
 ## SVG Icon
 
